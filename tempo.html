@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> JQuery </title>
+<style>
+	#output{
+		background-color: red;
+		color: white;
+		text-align: center;
+		width: 24%;
+	}
+	
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("button").click(function(){
+		var w = $('#weight').val();
+		var foot = $('#foot').val();
+		var feet = (foot * 30.48)/100;
+		var inches = $('#inches').val();
+		var metrs = ((inches * 2.54)/100);
+		var h = (feet + metrs);
+		var BMI = (w / (h * h) );
+		//Math is wrong!
+		$("#output").val(BMI);
+		var img = "images/";
+			if( BMI > 30 ){
+				$('#myImg').attr('src','images/obese.jpeg');
+			}
+			else if( 24 < BMI < 29){
+				$('#myImg').attr('src','images/oweight.jpeg');
+			}
+			else if( 18 < BMI < 23){
+				$('#myImg').attr('src','images/normal.jpeg');
+			}
+			else{
+				$('#myImg').attr('src','images/uweight.jpeg');
+			}
+	})
+	$('input').click(function(){
+		$(this).val('');
+	})
+})
+
+</script>
+</head>
+<body>
+<h1><p>Body Mass Index</p> </h1>
+<input type="textbox" id="weight" value="Enter weight in pounds"/>
+<input type="textbox" id="foot" value="Your height:  inches"/>
+<input type="textbox" id="inches" value="Your height:  foot"/>
+<button>Calculate</button>
+<form>
+	 BMI: <input type="text" id="output" name="ouput" disabled>
+</form>
+<p><img src="" id="myImg"/></p>
+
+
+
+
+
+
+</body>
+</title>
