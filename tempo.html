@@ -16,26 +16,26 @@
 $(document).ready(function(){
 	$("button").click(function(){
 		var w = $('#weight').val();
+		var kilo = ( w / 2.2046);
 		var foot = $('#foot').val();
 		var feet = (foot * 30.48)/100;
 		var inches = $('#inches').val();
 		var metrs = ((inches * 2.54)/100);
 		var h = (feet + metrs);
-		var BMI = (w / (h * h) );
-		//Math is wrong!
+		var BMI = (kilo / (h * h) );
 		$("#output").val(BMI);
 		var img = "images/";
-			if( BMI > 30 ){
-				$('#myImg').attr('src','images/obese.jpeg');
+			if( BMI >= 30 ){
+				$('#myImg').attr('src','images/obese.jpg');
 			}
-			else if( 24 < BMI < 29){
-				$('#myImg').attr('src','images/oweight.jpeg');
+			else if( 24 <= BMI <= 29){
+				$('#myImg').attr('src','images/oweight.jpg');
 			}
-			else if( 18 < BMI < 23){
-				$('#myImg').attr('src','images/normal.jpeg');
+			else if( 18 <= BMI <= 23){
+				$('#myImg').attr('src','images/normal.jpg');
 			}
 			else{
-				$('#myImg').attr('src','images/uweight.jpeg');
+				$('#myImg').attr('src','images/uweight.jpg');
 			}
 	})
 	$('input').click(function(){
@@ -48,8 +48,8 @@ $(document).ready(function(){
 <body>
 <h1><p>Body Mass Index</p> </h1>
 <input type="textbox" id="weight" value="Enter weight in pounds"/>
-<input type="textbox" id="foot" value="Your height:  inches"/>
-<input type="textbox" id="inches" value="Your height:  foot"/>
+<input type="textbox" id="foot" value="Your height:  foot"/>
+<input type="textbox" id="inches" value="Your height:  inches"/>
 <button>Calculate</button>
 <form>
 	 BMI: <input type="text" id="output" name="ouput" disabled>
