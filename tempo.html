@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html> 
+<!-- Make website show when you hover
+Make iframe bigger
+Add custom pictures
+Add lots of javascript add ons -->
 <head>
-<title> JQuery </title>
+<title> BMI/Healthy Calculator </title>
 <style>
+	#header{
+		background-color: slategray;
+		color: snow;
+		
+	}
+	#contain{
+		padding:10px;
+		background-color: lightcyan;
+		color: darkred;
+	}
 	#output{
 		background-color: red;
 		color: white;
 		text-align: center;
 		width: 24%;
+	}
+	nav a{
+		text-decoration: none;
+		color: white;
+		text-align: center;
+	}
+	#mySite{
+		color: blue;
+		text-decoration: none;
 	}
 	
 </style>
@@ -27,17 +50,42 @@ $(document).ready(function(){
 		var img = "images/";
 			if( BMI >= 30 ){
 				$('#myImg').attr('src','images/obese.jpg');
+				$('#mySite').show();
+				$('#mySite').attr('href','http://healthmeup.com/photogallery-weight-loss/obesity-tips-to-fight-obesity-and-lose-weight/18832');
+				$('#mySite').html('http://healthmeup.com/photogallery-weight-loss/obesity-tips-to-fight-obesity-and-lose-weight/18832');
+				alert("You are obese; do some walking and sweat");
 			}
-			else if( 24 <= BMI <= 29){
+			else if( BMI >= 24 && BMI <= 29){
 				$('#myImg').attr('src','images/oweight.jpg');
+				$('#mySite').show();
+				$('#mySite').attr('href','http://www.theguardian.com/lifeandstyle/2011/aug/15/exercise-advice-overweight-people');
+				$('#mySite').html('http://www.theguardian.com/lifeandstyle/2011/aug/15/exercise-advice-overweight-people');
+				alert("You are fat; need to go on diet, workout/excercise, or do a jog");
 			}
-			else if( 18 <= BMI <= 23){
+			else if(  BMI >= 18 && BMI <= 23){
 				$('#myImg').attr('src','images/normal.jpg');
 			}
-			else{
+			else if( BMI <= 17){
 				$('#myImg').attr('src','images/uweight.jpg');
+				$('#mySite').show();
+				$('#mySite').attr('href','http://www.mayoclinic.org/healthy-living/nutrition-and-healthy-eating/expert-answers/underweight/faq-20058429');
+				$('#mySite').html('http://www.mayoclinic.org/healthy-living/nutrition-and-healthy-eating/expert-answers/underweight/faq-20058429');
+				alert("You are skinny; need to eat more, workout, be lazy");
 			}
 	})
+	
+	$('nav.container').children('ul').children('li').hover(function() {
+        if ($(this).find('.subTip').length > 0) {
+            $(this).find('.subTip').slideToggle();
+        }
+		else if ($(this).find('.subAbout').length > 0) {
+            $(this).find('.subAbout').slideToggle();
+        }
+    }, function(){
+        $(this).find('.subTip').delay(1).slideToggle();
+		$(this).find('.subAbout').delay(1).slideToggle();
+    })
+	
 	$('input').click(function(){
 		$(this).val('');
 	})
@@ -46,17 +94,39 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<h1><p>Body Mass Index</p> </h1>
-<input type="textbox" id="weight" value="Enter weight in pounds"/>
+<div id="header">
+<h1><p>Body Mass Index</p></h1>
+<nav class="container">
+	<ul>
+		<li> <a href="" title="Help"> Help </a>
+			<ul class="subTip" hidden>
+			<li><a class="label" href="" title="TIPS"> TIPS </a>
+			<li><a  href="" title="FACTS"> FACTS/STATISTICS </a>
+			<li><a  href="" title="TIPS"> FOOD </a>
+			</ul>
+		</li>
+		<li> <a href="" title="About"> About </a>
+			<ul class="subAbout" hidden>
+			<li><a class="label" href="" title="CREDITS"> CREDITS </a>
+			</ul>
+		</li>
+	</ul>
+</nav>
+</div>
+<div id="contain">
+<h3> Weight </h3><br/>
+<input type="textbox" id="weight" value="Enter weight in pounds"/><br/><h3>Height</h3>
 <input type="textbox" id="foot" value="Your height:  foot"/>
 <input type="textbox" id="inches" value="Your height:  inches"/>
+<a href="" id="mySite" width="100%" height="300px" hidden>  </a>
 <button>Calculate</button>
 <form>
 	 BMI: <input type="text" id="output" name="ouput" disabled>
 </form>
 <p><img src="" id="myImg"/></p>
-
-
+<hr>
+<a href="" id="mySite"hidden>  </a>
+</div>
 
 
 
