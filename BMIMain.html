@@ -8,9 +8,12 @@ Add lots of javascript add ons -->
 <title> BMI/Healthy Calculator </title>
 <style>
 	#allz{
-		background-color: darkgray;
+		background-color: slategray;
 		color: snow;
 		float: right;
+		height: 1000px;
+		background-image: url("images/issues1.jpg");
+		background-repeat: repeat-x;
 	}
 	#allz h6,img{
 		width: 60%;
@@ -25,7 +28,7 @@ Add lots of javascript add ons -->
 			float:left;
 		}
 	.container a{
-	    color: blue;
+	    color: snow;
 		text-decoration: none;
 	}
 	#output{
@@ -33,6 +36,13 @@ Add lots of javascript add ons -->
 		color: white;
 		text-align: center;
 		width: 24%;
+	}
+	#output2{
+		background-color: lightcyan;
+		color: slategray;
+		text-align: center;
+		width: 24%;
+		height: 150px;
 	}
 	nav a{
 		text-decoration: none;
@@ -42,6 +52,10 @@ Add lots of javascript add ons -->
 	#mySite{
 		color: blue;
 		text-decoration: none;
+	}
+	#myImg{
+		height: 150px;
+		width: 75%;
 	}
 	
 </style>
@@ -70,25 +84,28 @@ $(document).ready(function(){
 				$('#mySite').show();
 				$('#mySite').attr('href','http://www.theguardian.com/lifeandstyle/2011/aug/15/exercise-advice-overweight-people');
 				alert("You are fat; need to go on diet, workout/excercise, or do a jog");
+				//WORK ON GRAMMAR
+				$('textarea').html("Being overweight means you are most likely to have diabetes, high cholestorol, and cancers. Do activites such as jogging, working with weights, and eating food cooked at home.");
 			}
 			else if(  BMI >= 18 && BMI <= 23){
 				$('#myImg').attr('src','images/normal.jpg');
+				$('#output2').attr('color','yellow');
+				$('textarea').html('CONGRATULATIONS ON BEING NORMAL!');
 			}
 			else if( BMI <= 17){
 				$('#myImg').attr('src','images/uweight.jpg');
 				$('#mySite').show();
 				$('#mySite').attr('href','http://www.mayoclinic.org/healthy-living/nutrition-and-healthy-eating/expert-answers/underweight/faq-20058429');
 				alert("You are skinny; need to eat more, workout, be lazy");
+				$('textarea').html(" 'Being underweight means being more exposed to illnesses, and not being able to regulate body temperature. Vitamins A and C, as well as eating from each of the food grouops,are important to a healthy immunity. The most dangerous part of being unhealthy is feeling weak and not having energy' "); 
 			}
 	})
 	
 	$('#myImg').mouseover(function(){
-						$(this).attr('width','200%')
 						$(this).attr('height','150px');
 	})
 	$('#myImg').mouseleave(function(){
-						$(this).attr('width','100%')
-						$(this).attr('height','70px');
+						$(this).attr('height','40px');
 	})
 	
 	$('nav.container').children('ul').children('li').hover(function() {
@@ -116,14 +133,14 @@ $(document).ready(function(){
 <h1><p>Body Mass Index</p></h1>
 <nav class="container">
 	<ul>
-		<li> <a href="" title="Help"> &ensp;&ensp;&ensp;&ensp; Help </a>
+		<li> <a href="" title="Help" disabled> &ensp;&ensp;&ensp;&ensp; Help </a>
 			<ul class="subTip" hidden>
 			<li><a class="label" href="" title="TIPS"> TIPS </a>
 			<li><a  href="" title="FACTS"> FACTS/STATISTICS </a>
 			<li><a  href="" title="TIPS"> FOOD </a>
 			</ul>
 		</li>
-		<li> <a href="" title="About"> &ensp;&ensp;&ensp;&ensp;About </a>
+		<li> <a href="" title="About" disabled> &ensp;&ensp;&ensp;&ensp;About </a>
 			<ul class="subAbout" hidden>
 			<li><a class="label" href="" title="CREDITS"> CREDITS </a>
 			</ul>
@@ -142,7 +159,7 @@ $(document).ready(function(){
 </form>
 <h6><img src="" id="myImg"/></h6>
 <a href="" id="mySite"hidden>  </a>
-
+<textarea id="output2" disabled></textarea>
 </div>
 
 
