@@ -7,21 +7,24 @@ Add lots of javascript add ons -->
 <head>
 <title> BMI/Healthy Calculator </title>
 <style>
+
+	#logo{ float: right; }
 	#allz{
 		background-color: slategray;
 		color: snow;
-		float: right;
-		height: 1000px;
 		background-image: url("images/issues1.jpg");
-		background-repeat: repeat-x;
+		background-repeat: none;
+		background-size: 100%;
 	}
-	#allz h6,img{
-		width: 60%;
-		float: left;
+	h6,img{
+		height: 85px;
+		width: 80%;
+	}
+	h6,h3{
+		opacity: 0.8;
 	}
 	#allz input{
 		width: 60%;
-		float: left;
 	}
 		#allz ul{
 			list-style-type: none;
@@ -38,7 +41,8 @@ Add lots of javascript add ons -->
 		width: 24%;
 	}
 	#output2{
-		background-color: oldlace;
+		background-color: lightcyan;
+		opacity: 0.8;
 		color: slategray;
 		text-align: center;
 		width: 24%;
@@ -53,14 +57,11 @@ Add lots of javascript add ons -->
 		color: blue;
 		text-decoration: none;
 	}
-	#myImg{
-		height: 150px;
-		width: 75%;
-	}
-	
+
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
+	$("#myImg").attr('width','25%');
 $(document).ready(function(){
 	$("button").click(function(){
 		var w = $('#weight').val();
@@ -72,12 +73,12 @@ $(document).ready(function(){
 		var h = (feet + metrs);
 		var BMI = (kilo / (h * h) );
 		$("#output").val(BMI);
-		var img = "images/";
 			if( BMI >= 30 ){
 				$('#myImg').attr('src','images/obese.jpg');
 				$('#mySite').show();
 				$('#mySite').attr('href','http://healthmeup.com/photogallery-weight-loss/obesity-tips-to-fight-obesity-and-lose-weight/18832');
 				alert("You are obese; do some walking and sweat");
+				$('textarea').html("Being obese can lead to: Heart disease and stroke, Diabetes, Gout, and Breathing Problems, This will also lead to Reproduction problems and Sleep Apnea");
 			}
 			else if( BMI >= 24 && BMI <= 29){
 				$('#myImg').attr('src','images/oweight.jpg');
@@ -102,10 +103,10 @@ $(document).ready(function(){
 	})
 	
 	$('#myImg').mouseover(function(){
-						$(this).attr('height','150px');
+						$(this).attr('height','default');
 	})
 	$('#myImg').mouseleave(function(){
-						$(this).attr('height','40px');
+						$(this).attr('height','80px');
 	})
 	
 	$('nav.container').children('ul').children('li').hover(function() {
@@ -129,8 +130,8 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="allz">
-<h6><img src="images/coologo.png"/></h6>
-<h1><p>Body Mass Index</p></h1>
+<h6><img src="images/coologo.png" id="logo"/></h6>
+<h1><p>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Body Mass Index</p></h1>
 <nav class="container">
 	<ul>
 		<li> <a href="" title="Help"> &ensp;&ensp;&ensp;&ensp; Help </a>
@@ -142,24 +143,25 @@ $(document).ready(function(){
 		</li>
 		<li> <a href="" title="About" disabled> &ensp;&ensp;&ensp;&ensp;About </a>
 			<ul class="subAbout" hidden>
-			<li><a class="label" href="BMICredits.html" title="CREDITS"> CREDITS </a>
+			<li><a class="label" href="BMICredits.html" title="CREDITS" target="_blank"> CREDITS </a>
 			</ul>
 		</li>
 	</ul>
 </nav>
-<br/> <br/> <br/>
-<h3> Weight </h3><br/>
-<input type="textbox" id="weight" value="Enter weight in pounds"/><br/><h3>Height</h3>
-<input type="textbox" id="foot" value="Your height:  foot"/>
-<input type="textbox" id="inches" value="Your height:  inches"/>
-<a href="" id="mySite" width="100%" height="300px" hidden>  </a>
+<br/> <br/> 
+<h6><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Weight</h3></h6>
+<input type="textbox" id="weight" value="Enter weight in pounds" /><br/>
+<h6><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Height</h3></h6>
+<input type="textbox" id="foot" value="Your height:  foot" />
+<input type="textbox" id="inches" value="Your height:  inches" /><br/>
+<a href="" id="mySite" width="100%" height="300px" hidden>  </a> <br/> <br/>
 <button>Calculate</button>
 <form>
 	 BMI: <input type="text" id="output" name="ouput" disabled>
 </form>
-<h6><img src="" id="myImg"/></h6>
-<a href="" id="mySite"hidden>  </a>
-<textarea id="output2" disabled></textarea>
+<img src="" id="myImg"/>
+<a href="" id="mySite" hidden>  </a>
+<textarea id="output2" target="_blank" disabled></textarea>
 </div>
 
 
