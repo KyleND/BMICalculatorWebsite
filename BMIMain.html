@@ -61,7 +61,7 @@ Add lots of javascript add ons -->
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-	$("#myImg").attr('width','25%');
+	document.getElementById("#myImg").show();
 $(document).ready(function(){
 	$("button").click(function(){
 		var w = $('#weight').val();
@@ -73,6 +73,7 @@ $(document).ready(function(){
 		var h = (feet + metrs);
 		var BMI = (kilo / (h * h) );
 		$("#output").val(BMI);
+		document.getElementById("#myImg").show();
 			if( BMI >= 30 ){
 				$('#myImg').attr('src','images/obese.jpg');
 				$('#mySite').show();
@@ -149,19 +150,20 @@ $(document).ready(function(){
 	</ul>
 </nav>
 <br/> <br/> 
-<h6><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Weight</h3></h6>
-<input type="textbox" id="weight" value="Enter weight in pounds" /><br/>
-<h6><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Height</h3></h6>
-<input type="textbox" id="foot" value="Your height:  foot" />
-<input type="textbox" id="inches" value="Your height:  inches" /><br/>
-<a href="" id="mySite" width="100%" height="300px" hidden>  </a> <br/> <br/>
+<label for="weight"><h3> &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Weight </h3></label>
+<input type="textbox" id="weight" value="Enter weight in pounds" />
+<label for="foot"><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;  Foot</h3></label>
+<input type="textbox" id="foot" value="Your height:  foot" /><br/>
+<label for="foot"><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;  inches</h3></label>
+<input type="textbox" id="inches" value="Your height:  inches" />
+<a href="" id="mySite" width="100%" height="300px" hidden>  </a> <br/>
 <button>Calculate</button>
 <form>
 	 BMI: <input type="text" id="output" name="ouput" disabled>
 </form>
-<img src="" id="myImg"/>
+<img src="" id="myImg" hidden />
 <a href="" id="mySite" hidden>  </a>
-<textarea id="output2" target="_blank" disabled></textarea>
+<textarea id="output2" target="_blank" disabled hidden></textarea>
 </div>
 
 
