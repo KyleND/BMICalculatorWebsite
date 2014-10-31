@@ -9,12 +9,17 @@ Add lots of javascript add ons -->
 <style>
 
 	#logo{ float: right; }
+	#myImg{
+		float: right;
+		height: 200px;
+	}
 	#allz{
 		background-color: slategray;
 		color: snow;
 		background-image: url("images/issues1.jpg");
 		background-repeat: none;
-		background-size: 100%;
+		background-size: 100% 100%;
+		height: 1000px;
 	}
 	h6,img{
 		height: 85px;
@@ -54,14 +59,26 @@ Add lots of javascript add ons -->
 		text-align: center;
 	}
 	#mySite{
-		color: blue;
+		color: snow;
 		text-decoration: none;
 	}
-
+	#input4{
+		width:50%;
+		height: 150px;
+		float: left;
+	}
+	textarea{ 
+			width: 100%;
+	}
+	#resultzuzu{
+		float: left;
+		width: 30%;
+		height: 100px;
+		padding: 10px;
+	}
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-	document.getElementById("#myImg").show();
 $(document).ready(function(){
 	$("button").click(function(){
 		var w = $('#weight').val();
@@ -73,20 +90,20 @@ $(document).ready(function(){
 		var h = (feet + metrs);
 		var BMI = (kilo / (h * h) );
 		$("#output").val(BMI);
-		document.getElementById("#myImg").show();
+		$("#myImg").show();
+		$("textarea").show();
 			if( BMI >= 30 ){
 				$('#myImg').attr('src','images/obese.jpg');
-				$('#mySite').show();
 				$('#mySite').attr('href','http://healthmeup.com/photogallery-weight-loss/obesity-tips-to-fight-obesity-and-lose-weight/18832');
-				alert("You are obese; do some walking and sweat");
+				$('#mySite').show();
+				$('#mySite').html('http://healthmeup.com/photogallery-weight-loss/obesity-tips-to-fight-obesity-and-lose-weight/18832');
 				$('textarea').html("Being obese can lead to: Heart disease and stroke, Diabetes, Gout, and Breathing Problems, This will also lead to Reproduction problems and Sleep Apnea");
 			}
 			else if( BMI >= 24 && BMI <= 29){
 				$('#myImg').attr('src','images/oweight.jpg');
-				$('#mySite').show();
 				$('#mySite').attr('href','http://www.theguardian.com/lifeandstyle/2011/aug/15/exercise-advice-overweight-people');
-				alert("You are fat; need to go on diet, workout/excercise, or do a jog");
-				//WORK ON GRAMMAR
+				$('#mySite').show();
+				$('#mySite').html('http://www.theguardian.com/lifeandstyle/2011/aug/15/exercise-advice-overweight-people');
 				$('textarea').html("Being overweight means you are most likely to have diabetes, high cholestorol, and cancers. Do activites such as jogging, working with weights, and eating food cooked at home.");
 			}
 			else if(  BMI >= 18 && BMI <= 23){
@@ -96,18 +113,18 @@ $(document).ready(function(){
 			}
 			else if( BMI <= 17){
 				$('#myImg').attr('src','images/uweight.jpg');
-				$('#mySite').show();
 				$('#mySite').attr('href','http://www.mayoclinic.org/healthy-living/nutrition-and-healthy-eating/expert-answers/underweight/faq-20058429');
-				alert("You are skinny; need to eat more, workout, be lazy");
+				$('#mySite').show();
+				$('#mySite').html('http://www.mayoclinic.org/healthy-living/nutrition-and-healthy-eating/expert-answers/underweight/faq-20058429');
 				$('textarea').html(" 'Being underweight means being more exposed to illnesses, and not being able to regulate body temperature. Vitamins A and C, as well as eating from each of the food grouops,are important to a healthy immunity. The most dangerous part of being unhealthy is feeling weak and not having energy' "); 
 			}
 	})
 	
 	$('#myImg').mouseover(function(){
-						$(this).attr('height','default');
+						$(this).attr('size','75% 75%');
 	})
 	$('#myImg').mouseleave(function(){
-						$(this).attr('height','80px');
+						$(this).attr('size','50% 50%');
 	})
 	
 	$('nav.container').children('ul').children('li').hover(function() {
@@ -130,15 +147,15 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div id="allz">
+<div id="allz"> <div id="header">
 <h6><img src="images/coologo.png" id="logo"/></h6>
-<h1><p>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Body Mass Index</p></h1>
+<h1><p>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Body Mass Index</p></h1>
 <nav class="container">
 	<ul>
 		<li> <a href="" title="Help"> &ensp;&ensp;&ensp;&ensp; Help </a>
 			<ul class="subTip" hidden>
 			<li><a class="label" href="" title="TIPS"> TIPS </a>
-			<li><a  href="" title="FACTS"> FACTS/STATISTICS </a>
+			<li><a  href="BMIStatsm.html" title="FACTS" target="_blank"> FACTS/STATISTICS </a>
 			<li><a  href="" title="TIPS"> FOOD </a>
 			</ul>
 		</li>
@@ -149,25 +166,28 @@ $(document).ready(function(){
 		</li>
 	</ul>
 </nav>
-<br/> <br/> 
+</div>
+<br/> <br/>
+<div id="input4"> 
 <label for="weight"><h3> &ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp; Weight </h3></label>
 <input type="textbox" id="weight" value="Enter weight in pounds" />
 <label for="foot"><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;  Foot</h3></label>
 <input type="textbox" id="foot" value="Your height:  foot" /><br/>
-<label for="foot"><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;  inches</h3></label>
+<label for="inches"><h3>&ensp;&ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;  inches</h3></label>
 <input type="textbox" id="inches" value="Your height:  inches" />
 <a href="" id="mySite" width="100%" height="300px" hidden>  </a> <br/>
 <button>Calculate</button>
 <form>
 	 BMI: <input type="text" id="output" name="ouput" disabled>
 </form>
-<img src="" id="myImg" hidden />
-<a href="" id="mySite" hidden>  </a>
-<textarea id="output2" target="_blank" disabled hidden></textarea>
 </div>
+<div id="resultzuzu">
+<img src="" id="myImg" hidden />
 
-
-
+<textarea id="output2" target="_blank" maxlength="100" readonly hidden></textarea>
+<h3><a href="" id="mySite" hidden></a></h3>
+</div>
+</div>
 
 </body>
 </title>
